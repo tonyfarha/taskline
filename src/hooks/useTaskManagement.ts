@@ -12,26 +12,26 @@ export const useTaskManagement = () => {
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState<number | null>(null);
 
-  const handleAddTask = (newTaskData: Omit<Task, 'id'>) => {
-    const { title, description, startDate, endDate, color } = newTaskData;
+  // const handleAddTask = (newTaskData: Omit<Task, 'id'>) => {
+  //   const { title, description, startDate, endDate, color } = newTaskData;
 
-    if (new Date(endDate) < new Date(startDate)) {
-      toast.error("End date cannot be before start date.");
-      return;
-    }
+  //   if (new Date(endDate) < new Date(startDate)) {
+  //     toast.error("End date cannot be before start date.");
+  //     return;
+  //   }
 
-    const newTask: Task = {
-      id: tasks.length + 1,
-      title,
-      description,
-      startDate,
-      endDate,
-      color,
-    };
-    setTasks([...tasks, newTask]);
-    toast.success("Task created successfully!");
-    setCreateTaskModalOpen(false);
-  };
+  //   const newTask: Task = {
+  //     id: tasks.length + 1,
+  //     title,
+  //     description,
+  //     startDate,
+  //     endDate,
+  //     color,
+  //   };
+  //   setTasks([...tasks, newTask]);
+  //   toast.success("Task created successfully!");
+  //   setCreateTaskModalOpen(false);
+  // };
 
   const handleEditTask = (updatedTask: Task) => {
     if (new Date(updatedTask.endDate) < new Date(updatedTask.startDate)) {

@@ -38,7 +38,7 @@ const getTaskStyle = (task: Task, timelineStartDate: Date, totalDaysInView: numb
 
   // Calculate the difference in days from the start of the timeline
   let startOffset = 0;
-  let tempStartDate = new Date(normalizedTimelineStartDate);
+  const tempStartDate = new Date(normalizedTimelineStartDate);
   while (tempStartDate.getTime() < effectiveStartDate.getTime()) {
     tempStartDate.setDate(tempStartDate.getDate() + 1);
     startOffset++;
@@ -46,7 +46,7 @@ const getTaskStyle = (task: Task, timelineStartDate: Date, totalDaysInView: numb
 
   // Calculate the duration of the task within the view
   let duration = 0;
-  let tempEndDate = new Date(effectiveStartDate);
+  const tempEndDate = new Date(effectiveStartDate);
   while (tempEndDate.getTime() <= effectiveEndDate.getTime()) {
     tempEndDate.setDate(tempEndDate.getDate() + 1);
     duration++;

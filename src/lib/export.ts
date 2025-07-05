@@ -16,8 +16,8 @@ export const exportToXLSX = async (tasks: Task[]) => {
   const minDate = new Date(Math.min(...startDates));
   const maxDate = new Date(Math.max(...endDates));
 
-  const dates = [];
-  let currentDate = new Date(minDate);
+  const dates: Date[] = [];
+  const currentDate = new Date(minDate);
   while (currentDate <= maxDate) {
     dates.push(new Date(currentDate));
     currentDate.setDate(currentDate.getDate() + 1);
