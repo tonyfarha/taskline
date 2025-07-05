@@ -3,7 +3,7 @@ import ExcelJS from "exceljs";
 
 export const exportToXLSX = async (tasks: Task[]) => {
   const workbook = new ExcelJS.Workbook();
-  const worksheet = workbook.addWorksheet("TasksLine");
+  const worksheet = workbook.addWorksheet("TaskLine");
 
   // Determine the date range of the timeline from the selected tasks
   if (tasks.length === 0) {
@@ -72,7 +72,7 @@ export const exportToXLSX = async (tasks: Task[]) => {
   const url = window.URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "tasksline.xlsx";
+  a.download = "taskline.xlsx";
   a.click();
   window.URL.revokeObjectURL(url);
 };

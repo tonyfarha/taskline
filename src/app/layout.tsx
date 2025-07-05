@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TasksLine",
+  title: "TaskLine",
   description: "Task management application with a timeline view",
 };
 

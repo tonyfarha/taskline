@@ -25,7 +25,7 @@ export const TaskList = ({
       <div className="flex justify-between items-center mb-2">
         <h2 className="text-xl font-semibold">Task List</h2>
         <Button onClick={onExportClick} disabled={selectedTasks.length === 0}>
-          Export TasksLine (.xlsx)
+          Export TaskLine (.xlsx)
         </Button>
       </div>
       <div className="border rounded-lg">

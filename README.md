@@ -1,8 +1,8 @@
-# TasksLine
+# TaskLine
 
 ## Description
 
-TasksLine is a simple and intuitive task management application that visualizes your tasks on a timeline. It allows you to create, edit, and delete tasks, set their start and end dates, assign colors, and view them clearly laid out across a monthly calendar. You can easily navigate between months and export your task data.
+TaskLine is a simple and intuitive task management application that visualizes your tasks on a timeline. It allows you to create, edit, and delete tasks, set their start and end dates, assign colors, and view them clearly laid out across a monthly calendar. You can easily navigate between months and export your task data.
 
 ## Tech Stack
 

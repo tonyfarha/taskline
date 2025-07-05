@@ -39,7 +39,7 @@ export default function Home() {
 
       <main>
         <section className="mb-8">
-          {/* <h2 className="text-xl font-semibold mb-2">TasksLine View</h2> */}
+          {/* <h2 className="text-xl font-semibold mb-2">TaskLine View</h2> */}
           <Timeline tasks={tasks} />
         </section>
 

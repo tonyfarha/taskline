@@ -8,7 +8,7 @@ interface HeaderProps {
 export const Header = ({ onCreateTaskClick }: HeaderProps) => {
   return (
     <header className="flex justify-between items-center mb-4">
-      <h1 className="text-2xl font-bold">TasksLine</h1>
+      <h1 className="text-2xl font-bold">TaskLine</h1>
       <DialogTrigger asChild>
         <Button onClick={onCreateTaskClick}>Create Task</Button>
       </DialogTrigger>
