@@ -43,4 +43,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Note
 
-This application was "vibe coded" as a test with the Google Gemini CLI.
+This application was "vibe coded" as a test with the [Google Gemini CLI](https://github.com/google-gemini/gemini-cli).
