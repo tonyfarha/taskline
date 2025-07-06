@@ -185,7 +185,7 @@ export const useTaskManagement = () => {
   };
 
   const handleExport = () => {
-    const tasksToExport = tasks.filter(task => selectedTasks.includes(task.id));
+    const tasksToExport = tasks.filter(task => task.id && selectedTasks.includes(task.id));
     exportToXLSX(tasksToExport)
       .then(() => toast.success("TaskLine exported successfully!"))
       .catch(() => toast.error("Failed to export taskline."));

@@ -35,7 +35,7 @@ export const TaskList = ({
             <Checkbox
               onCheckedChange={(checked) => {
                 if (checked) {
-                  setSelectedTasks(tasks.map((task) => task.id));
+                  setSelectedTasks(tasks.map((task) => task.id).filter((id): id is string => id !== undefined));
                 } else {
                   setSelectedTasks([]);
                 }
@@ -51,12 +51,14 @@ export const TaskList = ({
           <div key={task.id} className="grid grid-cols-6 gap-4 p-4 border-b items-center">
             <div className="col-span-1">
               <Checkbox
-                checked={selectedTasks.includes(task.id)}
+                checked={task.id ? selectedTasks.includes(task.id) : false}
                 onCheckedChange={(checked) => {
-                  if (checked) {
-                    setSelectedTasks([...selectedTasks, task.id]);
-                  } else {
-                    setSelectedTasks(selectedTasks.filter((id) => id !== task.id));
+                  if (task.id) {
+                    if (checked) {
+                      setSelectedTasks([...selectedTasks, task.id]);
+                    } else {
+                      setSelectedTasks(selectedTasks.filter((id) => id !== task.id));
+                    }
                   }
                 }}
               />
@@ -88,7 +90,7 @@ export const TaskList = ({
                     variant="ghost"
                     size="sm"
                     className="w-full justify-start text-red-500"
-                    onClick={() => onDeleteClick(task.id)}
+                    onClick={() => task.id && onDeleteClick(task.id)}
                   >
                     Delete
                   </Button>

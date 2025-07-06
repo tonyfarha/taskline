@@ -26,7 +26,7 @@ export const Header = ({ onCreateTaskClick }: HeaderProps) => {
           <Popover>
             <PopoverTrigger asChild>
               <div className="cursor-pointer">
-                {session.user.image && (
+                {session.user?.image && (
                   <Image
                     src={session.user.image}
                     alt="User Avatar"
