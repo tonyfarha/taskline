@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Label } from "@/components/ui/label";
 import { Task } from "@/types";
 import { toast } from "sonner";
+import { convertToISO } from "@/lib/utils";
 
 interface CreateTaskModalProps {
   isOpen: boolean;
@@ -41,8 +42,8 @@ export const CreateTaskModal = ({
     onAddTask({
       title,
       description,
-      startDate,
-      endDate,
+      startDate: convertToISO(startDate),
+      endDate: convertToISO(endDate),
       color,
     });
     // Clear form fields after adding task

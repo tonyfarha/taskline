@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Label } from "@/components/ui/label";
 import { Task } from "@/types";
 import { toast } from "sonner";
+import { formatDateToYYYYMMDD, convertToISO } from "@/lib/utils";
 
 interface EditTaskModalProps {
   isOpen: boolean;
@@ -30,8 +31,8 @@ export const EditTaskModal = ({
     if (taskToEdit) {
       setTitle(taskToEdit.title);
       setDescription(taskToEdit.description || "");
-      setStartDate(taskToEdit.startDate);
-      setEndDate(taskToEdit.endDate);
+      setStartDate(formatDateToYYYYMMDD(taskToEdit.startDate));
+      setEndDate(formatDateToYYYYMMDD(taskToEdit.endDate));
       setColor(taskToEdit.color);
     }
   }, [taskToEdit, isOpen]);
@@ -55,8 +56,8 @@ export const EditTaskModal = ({
         ...taskToEdit,
         title,
         description,
-        startDate,
-        endDate,
+        startDate: convertToISO(startDate),
+        endDate: convertToISO(endDate),
         color,
       });
     }

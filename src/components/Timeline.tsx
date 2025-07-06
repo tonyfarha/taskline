@@ -4,6 +4,7 @@ import { Task } from "@/types";
 import React, { useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { formatDateToYYYYMMDD } from "@/lib/utils";
 
 interface TimelineProps {
   tasks: Task[];
@@ -148,7 +149,7 @@ export const Timeline = ({ tasks }: TimelineProps) => {
                     <h4 className="font-bold">{task.title}</h4>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    {new Date(task.startDate).toLocaleDateString()} - {new Date(task.endDate).toLocaleDateString()}
+                    {formatDateToYYYYMMDD(task.startDate)} - {formatDateToYYYYMMDD(task.endDate)}
                   </p>
                   {task.description && <p className="mt-2 text-sm">{task.description}</p>}
                 </PopoverContent>

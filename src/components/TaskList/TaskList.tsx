@@ -2,12 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Task } from "@/types";
+import { formatDateToYYYYMMDD } from "@/lib/utils";
 
 interface TaskListProps {
   tasks: Task[];
-  selectedTasks: number[];
-  setSelectedTasks: (tasks: number[]) => void;
-  onDeleteClick: (taskId: number) => void;
+  selectedTasks: string[];
+  setSelectedTasks: (tasks: string[]) => void;
+  onDeleteClick: (taskId: string) => void;
   onEditClick: (task: Task) => void;
   onExportClick: () => void;
 }
@@ -67,8 +68,8 @@ export const TaskList = ({
               ></div>
               {task.title}
             </div>
-            <div>{task.startDate}</div>
-            <div>{task.endDate}</div>
+            <div>{formatDateToYYYYMMDD(task.startDate)}</div>
+            <div>{formatDateToYYYYMMDD(task.endDate)}</div>
             <div>
               <Popover>
                 <PopoverTrigger asChild>
