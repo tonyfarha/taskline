@@ -1,10 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { Task } from "@/types";
 import { exportToXLSX } from "@/lib/export";
 
 export const useTaskManagement = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    if (typeof window !== 'undefined') {
+      const savedTasks = localStorage.getItem('tasks');
+      return savedTasks ? JSON.parse(savedTasks) : [];
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  }, [tasks]);
   const [selectedTasks, setSelectedTasks] = useState<number[]>([]);
   const [isCreateTaskModalOpen, setCreateTaskModalOpen] = useState(false);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
@@ -12,26 +24,26 @@ export const useTaskManagement = () => {
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState<number | null>(null);
 
-  // const handleAddTask = (newTaskData: Omit<Task, 'id'>) => {
-  //   const { title, description, startDate, endDate, color } = newTaskData;
+  const handleAddTask = (newTaskData: Omit<Task, 'id'>) => {
+    const { title, description, startDate, endDate, color } = newTaskData;
 
-  //   if (new Date(endDate) < new Date(startDate)) {
-  //     toast.error("End date cannot be before start date.");
-  //     return;
-  //   }
+    if (new Date(endDate) < new Date(startDate)) {
+      toast.error("End date cannot be before start date.");
+      return;
+    }
 
-  //   const newTask: Task = {
-  //     id: tasks.length + 1,
-  //     title,
-  //     description,
-  //     startDate,
-  //     endDate,
-  //     color,
-  //   };
-  //   setTasks([...tasks, newTask]);
-  //   toast.success("Task created successfully!");
-  //   setCreateTaskModalOpen(false);
-  // };
+    const newTask: Task = {
+      id: tasks.length + 1,
+      title,
+      description,
+      startDate,
+      endDate,
+      color,
+    };
+    setTasks((prevTasks) => [...prevTasks, newTask]);
+    toast.success("Task created successfully!");
+    setCreateTaskModalOpen(false);
+  };
 
   const handleEditTask = (updatedTask: Task) => {
     if (new Date(updatedTask.endDate) < new Date(updatedTask.startDate)) {
@@ -75,6 +87,7 @@ export const useTaskManagement = () => {
     setDeleteModalOpen,
     taskToDelete,
     setTaskToDelete,
+    handleAddTask,
     handleEditTask,
     handleDeleteTask,
     handleExport,

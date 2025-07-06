@@ -13,7 +13,6 @@ import { DeleteConfirmationModal } from "@/components/modals/DeleteConfirmationM
 export default function Home() {
   const {
     tasks,
-    setTasks,
     selectedTasks,
     setSelectedTasks,
     isCreateTaskModalOpen,
@@ -25,6 +24,7 @@ export default function Home() {
     isDeleteModalOpen,
     setDeleteModalOpen,
     setTaskToDelete,
+    handleAddTask,
     handleEditTask,
     handleDeleteTask,
     handleExport,
@@ -62,10 +62,7 @@ export default function Home() {
       <CreateTaskModal
         isOpen={isCreateTaskModalOpen}
         onOpenChange={setCreateTaskModalOpen}
-        onAddTask={(newTask) => {
-          setTasks((prevTasks) => [...prevTasks, { ...newTask, id: prevTasks.length + 1 }]);
-          setCreateTaskModalOpen(false);
-        }}
+        onAddTask={handleAddTask}
       />
 
       <EditTaskModal
